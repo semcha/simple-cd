@@ -4,6 +4,7 @@ import json
 from ipaddress import ip_network, ip_address
 
 import requests
+import toml
 from flask import Flask, request, Response
 
 app = Flask(__name__)
@@ -48,3 +49,8 @@ def respond():
         subprocess.call(["sh", script_path])
 
     return Response(status=200)
+
+
+if __name__ == "__main__":
+    config = toml.load("config.toml")
+    app.run(host="0.0.0.0", port=config.get("port"))

@@ -1,0 +1,10 @@
+[Unit]
+Description=Service to start simple-cd
+After=network.target
+
+[Service]
+WorkingDirectory=/home/simple-cd
+ExecStart=python3 /home/simple-cd/main.py
+
+[Install]
+WantedBy=multi-user.target
